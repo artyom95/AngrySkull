@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8b150c00aa6786346a0deabae770c301
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _skullprefab: {fileID: 1563483209160970, guid: 5af68acb2d62e59469ae97ae3c5cbd38,
+      type: 3}
+  - _centrePoint: {instanceID: 0}
+  - _prefab: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
