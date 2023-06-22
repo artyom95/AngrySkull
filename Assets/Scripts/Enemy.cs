@@ -17,18 +17,17 @@ public class Enemy : MonoBehaviour
     private float _time;
     const float _speed = 3f;
     private float _currentSpeed;
-    private float _rotation;
+    private Rigidbody2D _rigidbody2D;
     private void Start()
     {
         _firstPosition = gameObject.GetComponent<Rigidbody2D>().velocity.y;
-       
+        
     }
 
     private void Update()
     {
         FindSpeedEnemy();
-        _rotation = GetComponent<Rigidbody2D>().transform.rotation.z;
-    
+        
     }
 
    
@@ -46,6 +45,8 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag(GlobalConstants.SKULL_TAG))
         {
             Die();
+            return;
+            
         }
 
         if (collision.gameObject.CompareTag(GlobalConstants.WOOD_TAG) ||collision.gameObject.CompareTag(GlobalConstants.GROUND_TAG))
@@ -55,17 +56,24 @@ public class Enemy : MonoBehaviour
                // Debug.Log( "Currentspeed" + _currentSpeed);
                // Debug.Log("speed" + _speed);
                 Die();
+                return;
+                
             }
-            if (_rotation >= 0.1f || _rotation <= -0.1f )
+            _rigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (IsHit(_rigidbody2D) )
             {
                 Die();
+                return;
             }
 
         }
         // TODO: Напишите логику уничтожения зомби тут
     }
-    
 
+    private bool IsHit(Rigidbody2D rigidbody2D)
+    {
+        return rigidbody2D != null && rigidbody2D.velocity.magnitude >= 0.8f;
+    }
     private void Die()
     {
         // Создаем эффект "взрыв" на месте убитого зомби.

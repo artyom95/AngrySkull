@@ -94,39 +94,8 @@ public class SkullController : MonoBehaviour
     }
     private void Shoot()
     {
-        _rigidbody2DSkull.AddForce(_trajectoryController.GetSpeed()*5.0f);
+        _rigidbody2DSkull.AddForce(_trajectoryController.GetSpeed(),ForceMode2D.Impulse);
       // MoveToFinish();
     }
-  /*  public void MoveToFinish()
-    {
-        _points = _trajectoryController.GetPointsToForward();
-        var time = 0f;
-        while (_index < _points.Length)
-        {
-            time += Time.deltaTime;
-            var distance = Vector3.Distance(transform.position, _nextPosition);
-            var travelTime = distance / _speed;
-            var progress = time / travelTime;
-           _rigidbody2DSkull.transform.position =  Vector3.MoveTowards(transform.position, _nextPosition, _speed*Time.deltaTime); //умножить на вектор скорости
-           
-            if (_rigidbody2DSkull.transform.position == _nextPosition)
-            {
-                _index++;
-                ChangeNextPosition();
-                time = 0f;
-            }
-            
-            
-        }
-        
-    }
-    
-    private void ChangeNextPosition()
-    {
-        if (_index < _points.Length)
-        {
-            _nextPosition = _points[_index];
-        }
-
-    }*/
+  
 }
